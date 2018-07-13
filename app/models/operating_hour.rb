@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: operating_hours
+#
+#  id          :bigint(8)        not null, primary key
+#  shelter_id  :bigint(8)
+#  day_of_week :integer
+#  open        :time
+#  close       :time
+#
+
 class OperatingHour < ApplicationRecord
   belongs_to :shelter
  
@@ -7,7 +18,7 @@ class OperatingHour < ApplicationRecord
  
   # If you want to set the day of week value with a string
   def day_of_week=(value)
-    day = Date::DAY_NAMES.index(value)
+    day = Date::DAYNAMES.index(value)
     write_attribute(:day_of_week, day) if day.present?
   end
 end

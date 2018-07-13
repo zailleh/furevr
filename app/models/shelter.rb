@@ -13,6 +13,8 @@
 #  updated_at     :datetime         not null
 #  image          :text
 #  url            :text
+#  phone          :string
+#  email          :string
 #
 
 class Shelter < ApplicationRecord

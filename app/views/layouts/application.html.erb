@@ -10,6 +10,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <head>
+        <nav>
+          <%= link_to 'Browse Pets', pets_path %>
+          <%= link_to 'Browse Shelters', shelters_path %>
+          <div class="logo"></div>
+          <%#TODO: Add logic to handle session state%>
+          <%= link_to 'Sign Up', new_user_path %>
+          <%= link_to 'Login', new_session_path %>
+        </nav>
+        <div class="slogan"></div>
+        <div class="search"></div>
+      </head>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

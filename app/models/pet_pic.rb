@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: animal_types
+# Table name: pet_pics
 #
 #  id         :bigint(8)        not null, primary key
-#  type_name  :text
+#  url        :text
+#  pet_id     :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class AnimalType < ApplicationRecord
-  has_many :pets
-  has_many :breeds
+class PetPic < ApplicationRecord
+  belongs_to :pet
 end
