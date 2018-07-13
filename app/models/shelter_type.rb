@@ -2,8 +2,8 @@
 #
 # Table name: shelter_types
 #
-#  id   :bigint(8)        not null, primary key
-#  type :text
+#  id        :bigint(8)        not null, primary key
+#  type_name :text
 #
 
 class ShelterType < ApplicationRecord

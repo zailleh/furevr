@@ -11,10 +11,14 @@
 #  sheltertype_id :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  image          :text
+#  url            :text
 #
 
 class Shelter < ApplicationRecord
-  has_many :pets
   belongs_to :shelter_type
+  
+  has_many :pets
   has_many :users
+  has_many :operating_hours, dependent: :destroy
 end

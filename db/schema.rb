@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_13_030602) do
+ActiveRecord::Schema.define(version: 2018_07_13_035609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "animal_types", force: :cascade do |t|
-    t.text "type"
+    t.text "type_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "operating_hours", force: :cascade do |t|
+    t.bigint "shelter_id"
+    t.integer "day_of_week"
+    t.time "open"
+    t.time "close"
+    t.index ["shelter_id"], name: "index_operating_hours_on_shelter_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -31,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_030602) do
     t.string "shelter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "image"
   end
 
   create_table "pets_users", force: :cascade do |t|
@@ -39,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_030602) do
   end
 
   create_table "shelter_types", force: :cascade do |t|
-    t.text "type"
+    t.text "type_name"
   end
 
   create_table "shelters", force: :cascade do |t|
@@ -51,6 +60,8 @@ ActiveRecord::Schema.define(version: 2018_07_13_030602) do
     t.integer "sheltertype_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "image"
+    t.text "url"
   end
 
   create_table "users", force: :cascade do |t|

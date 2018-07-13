@@ -12,6 +12,7 @@
 #  shelter_id    :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  image         :text
 #
 
 class Pet < ApplicationRecord
