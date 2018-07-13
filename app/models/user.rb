@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  name            :string
+#  password_digest :text
+#  admin           :boolean
+#  shelter_id      :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   has_secure_password #bcrypt gem
   validates :email, :presence => true, :uniqueness => true
