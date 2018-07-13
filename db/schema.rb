@@ -40,8 +40,6 @@ ActiveRecord::Schema.define(version: 2018_07_13_030602) do
 
   create_table "shelter_types", force: :cascade do |t|
     t.text "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "shelters", force: :cascade do |t|
