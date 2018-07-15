@@ -1,2 +1,15 @@
-<h1>Pets#show</h1>
-<p>Find me in app/views/pets/show.html.erb</p>
+<%= content_tag :h1, @pet.name %>
+
+<ul>
+<% @pet.attributes.each do |item| %>
+  <%= content_tag :li, item[1] %>
+<% end %>
+</ul>
+
+<div class="pet_controls">
+  <% if @current_user.present? && @current_user.pets.find_by( :id => @pet.id ).present? %>
+    <%= link_to "Remove from Watch List", watchlist_path(@pet), :method => 'delete' %>
+  <% else %>
+    <%= link_to "Add to Watch List", watchlist_path(@pet) %>
+  <% end %> 
+</div>

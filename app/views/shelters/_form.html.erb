@@ -1,0 +1,50 @@
+<%= form_for @shelter do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :postcode %>
+  <%= f.text_field :postcode %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.label :suburb %>
+  <%= f.text_field :suburb %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.label :shelter_type_id %>
+  <%= f.select(:shelter_type_id, ShelterType.all.pluck(:type_name,:id)) %>
+
+  <%= f.label :image %>
+  <%= f.url_field :image %>
+
+  <%= f.label :url , 'Website' %>
+  <%= f.url_field :url %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.submit %>
+<% end %>
+
+
+<%
+#  id              :bigint(8)        not null, primary key
+#  name            :string
+#  postcode        :string
+#  address         :string
+#  suburb          :string
+#  state           :string
+#  shelter_type_id :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  image           :text
+#  url             :text
+#  phone           :string
+#  email           :string
+%>

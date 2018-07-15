@@ -2,17 +2,17 @@
 #
 # Table name: pets
 #
-#  id            :bigint(8)        not null, primary key
-#  name          :string
-#  date_of_birth :date
-#  animaltype_id :integer
-#  colour        :string
-#  size          :string
-#  vacc_status   :boolean
-#  shelter_id    :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  breed_id      :bigint(8)
+#  id             :bigint(8)        not null, primary key
+#  name           :string
+#  date_of_birth  :date
+#  animal_type_id :integer
+#  colour         :string
+#  size           :string
+#  vacc_status    :boolean
+#  shelter_id     :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  breed_id       :bigint(8)
 #
 
 class Pet < ApplicationRecord

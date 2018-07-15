@@ -2,19 +2,19 @@
 #
 # Table name: shelters
 #
-#  id             :bigint(8)        not null, primary key
-#  name           :string
-#  postcode       :string
-#  address        :string
-#  suburb         :string
-#  state          :string
-#  sheltertype_id :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  image          :text
-#  url            :text
-#  phone          :string
-#  email          :string
+#  id              :bigint(8)        not null, primary key
+#  name            :string
+#  postcode        :string
+#  address         :string
+#  suburb          :string
+#  state           :string
+#  shelter_type_id :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  image           :text
+#  url             :text
+#  phone           :string
+#  email           :string
 #
 
 class Shelter < ApplicationRecord

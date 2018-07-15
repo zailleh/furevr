@@ -16,9 +16,17 @@
           <%= link_to 'Browse Pets', pets_path %>
           <%= link_to 'Browse Shelters', shelters_path %>
           <div class="logo"></div>
-          <%#TODO: Add logic to handle session state%>
+          <% if @current_user.present? %>
+          <%= link_to 'Watch List', user_path(@current_user) %>
+          <%= link_to 'Sign Out', login_path, :method => 'delete' %>
+          <% else %>
           <%= link_to 'Sign Up', new_user_path %>
-          <%= link_to 'Login', new_session_path %>
+          <%= link_to 'Login', login_path %>
+          <% end %>
+
+          <% if @current_user.present? && @current_user.admin? %>
+            <%= link_to 'Admin Console', admin_path %>
+          <% end %>
         </nav>
         <div class="slogan"></div>
         <div class="search"></div>

@@ -1,0 +1,10 @@
+<%= content_tag :h1, 'Shelter Types' %>
+
+<ul>
+<% @shelter_types.each do |st| %>
+  <li>
+    <%= link_to st.type_name, edit_shelter_type_path(st) %>
+    <%= link_to 'Delete', shelter_type_path(st), :method => 'delete', :data => {:confirm => "Are you sure you want to delete #{ st.type_name }"} %>
+ </li>
+<% end %>
+</ul>

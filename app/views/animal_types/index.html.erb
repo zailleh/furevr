@@ -1,0 +1,10 @@
+<%= content_tag :h1, 'Animal Types' %>
+
+<ul>
+<% @animal_types.each do |at| %>
+  <li>
+    <%= link_to at.type_name, edit_animal_type_path(at) %>
+    <%= link_to 'Delete', animal_type_path(at), :method => 'delete', :data => {:confirm => "Are you sure you want to delete #{ at.type_name }"} %>
+ </li>
+<% end %>
+</ul>

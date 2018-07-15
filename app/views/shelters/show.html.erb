@@ -1,2 +1,9 @@
-<h1>Shelters#show</h1>
-<p>Find me in app/views/shelters/show.html.erb</p>
+<%= content_tag :h1, @shelter.name %>
+
+<% @shelter.attributes.each do |item| %>
+  <%= content_tag :p,  item[1] %>
+<% end %>
+
+<div class='controls'>
+  <%= link_to 'Edit', edit_shelter_path %>
+</div>
