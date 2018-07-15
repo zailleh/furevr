@@ -7,7 +7,6 @@ class SessionController < ApplicationController
     # raise 'hell'
     # get the user with this email address
     user = User.find_by :email => params[:email]
-
     # if hashed passwords match
     if user.present? && user.authenticate(params[:password])
       # remember this user in the session hash
