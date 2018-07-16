@@ -1,6 +1,8 @@
 <h1>Log In</h1>
 <% if flash[:login_error].present? %>
+<div class="alert alert-warning" role="alert">
   <%= content_tag :p, flash[:login_error] %>
+</div>
 <% end %>
 <%= form_tag(login_path, method: "post") do %>
   <%= label_tag :email %>

@@ -21,4 +21,11 @@ class Pet < ApplicationRecord
   has_and_belongs_to_many :users
   has_many :pet_pics
   belongs_to :breed
+
+
+  def age
+    days = ((Date.today.mjd - read_attribute(:date_of_birth).mjd) / 365.25 * 2).ceil / 2.0
+
+    days == days.to_i ? days.to_i : days
+  end
 end

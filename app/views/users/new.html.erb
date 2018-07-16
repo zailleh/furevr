@@ -1,12 +1,14 @@
 <h1>Sign Up</h1>
 
 <% if @user.errors.present? %>
+<div class="alert alert-warning" role="alert">
   <p>There was a problem signing you up:</p>
   <ul>
     <% @user.errors.full_messages.each do |m| %>
       <%= content_tag :li, m %>
     <% end %>
   </ul>
+</div>
 <% end %>
 
 

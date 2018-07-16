@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>FureverApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,28 +12,57 @@
   </head>
 
   <body>
-    <div class="container">
-      <head>
-        <nav>
+    <header class="mb-3 shadow-sm">
+      <nav class="row pt-4">
+        <div class="logo"></div>
+        <div class="show-sm">
+          <%= link_to '≫ Pets', pets_path %>
+          <%= link_to '≫ Shelters', shelters_path %>
+          <% if @current_user.present? %>
+          <%= link_to '≫ Watch List', user_path(@current_user) %>
+          <%= link_to '≫ Sign Out', login_path, :method => 'delete' %>
+          <% else %>
+          <%= link_to '≫ Sign Up', new_user_path %>
+          <%= link_to '≫ Login', login_path %>
+          <% end %>
+
+          <% if @current_user.present? && @current_user.admin? %>
+            <%= link_to '≫ Admin Console', admin_path %>
+          <% end %>
+        </div>
+        <div class="col-sm hide-sm">
           <%= link_to 'Browse Pets', pets_path %>
+          <span class="show-md">&nbsp;|&nbsp;</span>
           <%= link_to 'Browse Shelters', shelters_path %>
-          <div class="logo"></div>
+        </div>
+        <div class="col-sm-1 hide-md"></div>
+        <div class="col-sm hide-sm">
           <% if @current_user.present? %>
           <%= link_to 'Watch List', user_path(@current_user) %>
+          <span class="show-md">&nbsp;|&nbsp;</span>
           <%= link_to 'Sign Out', login_path, :method => 'delete' %>
           <% else %>
           <%= link_to 'Sign Up', new_user_path %>
+          <span class="show-md">&nbsp;|&nbsp;</span>
           <%= link_to 'Login', login_path %>
           <% end %>
 
           <% if @current_user.present? && @current_user.admin? %>
             <%= link_to 'Admin Console', admin_path %>
           <% end %>
-        </nav>
-        <div class="slogan"></div>
-        <div class="search"></div>
-      </head>
-      <main>
+        </div>
+      </nav>
+      <div class="slogan">Open your home Furevr</div>
+      <div class="search">
+        <form action="pets/search" method="get">
+            <%= label_tag :search %>
+            <%= password_field_tag :search %>
+
+            <%= submit_tag 'Search' %>
+        </form>
+      </div>
+    </header>
+      <main class="container-fluid">
         <%= yield %>
       </main>
     </div>

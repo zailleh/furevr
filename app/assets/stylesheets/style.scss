@@ -1,0 +1,165 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+$furevr-blue: #0f9cf4;
+$furevr-green: #90d03f;
+$furevr-teal:#00a688;
+
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #EEE !important;
+  min-width: 360px;
+}
+
+// .container {
+//   max-width: 960px;
+//   min-height: 100vh
+// }
+
+header {
+  nav {
+    color: white;
+    font-weight: bolder;
+    background-color: $furevr-blue;
+    height: 128px;
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.25em;
+    }
+    
+    .col-sm {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .logo {
+      position: absolute;
+      left: calc(50% - 82px);
+      display: inline-block;
+      width: 164px;
+      height: 164px;
+      background-image: url('/assets/white_paw_print.svg');
+      background-color: #4288cd;
+      border-radius: 50%;
+      border: 0.25em solid #c3c3ff;
+      background-repeat: no-repeat;
+      background-size: 60%;
+      background-position: center;
+    }
+
+    .show-sm {
+       padding-top: .5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: right;
+      margin-left: auto;
+      margin-right: 2em;
+    }
+
+    @media (max-width: 760px) {
+      .logo {
+        margin-left: 2.5em;
+        position: inherit;
+        left: inherit;
+      }
+
+      .hide-md {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .show-md {
+        display: none;
+      }
+      .hide-sm {
+        display: none
+      }
+    }
+
+    @media (min-width: 577px) {
+      .show-sm {
+        display: none;
+      }
+    }
+    @media (min-width: 761px) {
+      .show-md {
+        display: none;
+      }
+    }
+  }
+
+  .slogan {
+    font-size: 2em;
+    background-color: $furevr-teal;
+    color: white;
+    text-align: center;
+    line-height: 3em;
+    padding-top: 1.25em;
+  }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4em;
+    background-color: $furevr-green
+  }
+}
+
+.pet {
+  // background-color: #00a688 !important;
+  // color: white;
+  a:hover {
+    text-decoration: none;
+  }
+
+  .card-subtitle {
+    margin-top: -1em;
+  }
+}
+
+.icon {
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 2em;
+  height: 2em;
+  background-color: $furevr-teal;
+  margin-top: .3em;
+  margin-right: .5em;
+  border-radius: 50%;
+
+
+
+
+}
+
+.dog {
+  background-image: url('/assets/dog-face.svg');
+}
+
+.cat {
+  background-image: url('/assets/cat-face.svg');
+}
+
+.thumbnail {
+  height: 200px;
+}
+
+.thumb-container {
+  width: 200px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.pet-show {
+  background-color: $furevr-teal;
+}

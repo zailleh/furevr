@@ -1,8 +1,21 @@
+<div class="row">
 <% @pets.each do |p| %>
-<div class="petCard">
-  <%= link_to p.name, p %>
-  <%= content_tag :p, p.animal_type.type_name %>
-  <%= content_tag :p, p.breed.name %>
-  <%= image_tag p.pet_pics.first.url %>
-</div>
+  <div class="col-sm">
+    <a href="/pets/<%= p.id %>">
+      <div class="card pet shadow-sm">
+        <div class="row pt-2 pl-4 pr-2">
+          <div class="icon <%= p.animal_type.type_name.downcase %>"> </div>
+          <div class="col">
+            <div class="row"><h5 class="card-title"><%= p.name %></h5></div>
+            <div class="row">
+              <%= content_tag :p, p.breed.name, :class => 'card-subtitle mb-2 text-muted' %>
+            </div>
+          </div>
+        </div>
+        <%= image_tag p.pet_pics.first.url, :class => 'card-img-bottom' %>
+      </div>
+    </a>
+  </div>
 <% end %>
+</div>
+

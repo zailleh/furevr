@@ -8,12 +8,14 @@
 
 ################################################################################
 # Animal Types Lookup
+PetPic.destroy_all
+
 User.destroy_all
 Pet.destroy_all
 Shelter.destroy_all
 
 Breed.destroy_all
-PetPic.destroy_all
+
 
 AnimalType.destroy_all
 ShelterType.destroy_all
@@ -55,7 +57,7 @@ s1 = Shelter.create(
   :suburb         => "Regentville", # :string
   :state          => "NSW", # :string
   :shelter_type_id => st2.id, # :integer
-  :image          => "https://www.wellpet.com.au/wp-content/uploads/2015/11/NAH-Gallery-5-1024x768.,jpg", #text
+  :image          => "https://www.wellpet.com.au/wp-content/uploads/2015/11/NAH-Gallery-5-1024x768.jpg", #text
   :url            => "http://www.wellpet.com.au/nepean-animal-hospital/", # :text
   :phone          => "02 4739 4011", # :string
   :email          => "reception@wellpet.com.au" # :string
@@ -97,42 +99,46 @@ p1 = Pet.create(
   :size           => "Medium",      #string
   :vacc_status    => true,      #boolean
   :shelter_id     => s1.id,      #string
-  :breed_id       => at1.breeds.first.id
+  :breed_id       => at1.breeds.first.id,
+  :description    => "Slinky is a kind and gentle cat that loves long walks on the beach and cuddles at sunset."
 )
 
 p2 = Pet.create(
-  :name          => "Narrikup",     #string
-  :date_of_birth => "2018-04-10",      #date
+  :name           => "Narrikup",     #string
+  :date_of_birth  => "2018-04-10",      #date
   :animal_type_id => at1.id ,      #integer
-  :colour        => "Brown",      #string
-  :size          => "Small",      #string
-  :vacc_status   => true,      #boolean
-  :shelter_id    => s2.id,      #string
-  :breed_id      => at1.breeds.last.id
+  :colour         => "Brown",      #string
+  :size           => "Small",      #string
+  :vacc_status    => true,      #boolean
+  :shelter_id     => s2.id,      #string
+  :breed_id       => at1.breeds.last.id,
+  :description    => "Narrikup is a fiesty feline who likes to scratch things and bite things but, when she's tired from a hard day of scratching and biting, she will actually enjoy a cuddle... for a moment."
 )
 
 
 p3 = Pet.create(
-  :name          => "Angie",     #string
-  :date_of_birth => "2013-04-10",      #date
+  :name           => "Angie",     #string
+  :date_of_birth  => "2013-04-10",      #date
   :animal_type_id => at2.id ,      #integer
-  :colour        => "Black",      #string
-  :size          => "Small",      #string
-  :vacc_status   => true,      #boolean
-  :shelter_id    => s2.id,      #string
-  :breed_id      => at2.breeds.first.id
+  :colour         => "Black",      #string
+  :size           => "Small",      #string
+  :vacc_status    => true,      #boolean
+  :shelter_id     => s2.id,      #string
+  :breed_id       => at2.breeds.first.id,
+  :description    => "Angie is a wonderfully gentle and nice-natured greyhound who loves to lay around and do nothing and look sooky. Will occasionally enjoy zoomies."
 )
 
 
 p4 = Pet.create(
-  :name          => "Flash",     #string
-  :date_of_birth => "2013-04-10",      #date
+  :name           => "Flash",     #string
+  :date_of_birth  => "2013-04-10",      #date
   :animal_type_id => at2.id ,      #integer
-  :colour        => "Brown",      #string
-  :size          => "Small",      #string
-  :vacc_status   => true,      #boolean
-  :shelter_id    => s2.id,      #string
-  :breed_id      => at2.breeds.first.id
+  :colour         => "Brown",      #string
+  :size           => "Small",      #string
+  :vacc_status    => true,      #boolean
+  :shelter_id     => s2.id,      #string
+  :breed_id       => at2.breeds.first.id,
+  :description    => "Flash, as the name says, is the fastest dog alive"
 )
 
 ################################################################################
