@@ -44,7 +44,7 @@ header {
       display: inline-block;
       width: 164px;
       height: 164px;
-      background-image: url('/assets/white_paw_print.svg');
+      background-image: url('https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531715849/furevr-app/white_paw_print.svg');
       background-color: #4288cd;
       border-radius: 50%;
       border: 0.25em solid #c3c3ff;
@@ -143,11 +143,11 @@ header {
 }
 
 .dog {
-  background-image: url('/assets/dog-face.svg');
+  background-image: url('https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531715849/furevr-app/dog-face.svg');
 }
 
 .cat {
-  background-image: url('/assets/cat-face.svg');
+  background-image: url('https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531715849/furevr-app/cat-face.svg');
 }
 
 .thumbnail {
