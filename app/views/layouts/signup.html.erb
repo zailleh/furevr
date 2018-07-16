@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FureverApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="full-page d-flex justify-content-center align-items-center">
+      <div class="signup shadow-sm">
+        <header>
+          <nav>
+            <div class="logo"></div>
+            <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+          </nav>
+          <div class="slogan">Open your home Furevr</div>
+        </header>
+        <main>
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

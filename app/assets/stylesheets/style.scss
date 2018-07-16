@@ -163,3 +163,34 @@ header {
 .pet-show {
   background-color: $furevr-teal;
 }
+
+.full-page {
+  min-height: 100vh;
+}
+
+.signup {
+  max-width: 576px;
+  background-color: $furevr-green;
+  border-radius: .5em;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+
+
+  main, nav, .slogan {
+    padding: 2em;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: right;
+    align-items: flex-start;
+    a {
+      margin-left: auto;
+    }
+  }
+  
+  .slogan {
+    padding-bottom: 0;
+  }
+}

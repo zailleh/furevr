@@ -1,6 +1,8 @@
 class SessionController < ApplicationController
   def new
     flash[:redirect_from] = flash[:redirect_from] if flash[:redirect_from].present?
+
+    render :new, :layout => 'signup'
   end
 
   def create
