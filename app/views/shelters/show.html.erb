@@ -24,8 +24,11 @@
               <%= content_tag :p, 'Opening Hours:' %>
               <ul class="no-list">
                 <% @shelter.operating_hours.each do |hrs| %>
-                  <%= content_tag :li do %>
-                    <%= "#{ hrs.day_of_week } #{ hrs.open.strftime '%l:%M %p' } - #{ hrs.close.strftime '%l:%M %p' }" %>
+                  <% if hrs.open.present? %>
+                    <%= content_tag :li do %>
+                      <%= content_tag :div, "#{ hrs.day_of_week }:" %>
+                      <%= content_tag :div, "#{ hrs.open.strftime '%l:%M %p' } - #{ hrs.close.strftime '%l:%M %p' }", class: 'align-right' %>
+                    <% end %>
                   <% end %>
                 <% end %>
               </ul>
@@ -37,6 +40,7 @@
           <% if @current_user.present? && @current_user.shelter_id == @shelter.id %>
           <div class='controls'>
             <%= link_to 'Edit', edit_shelter_path, class: 'btn btn-secondary' %>
+            <%= link_to 'Edit Hours', shelter_hours_path, class: 'btn btn-secondary' %>
             <%= link_to 'Add Pet', new_pet_path, class: 'btn btn-secondary' %>
           </div>
           <% end %>
@@ -55,7 +59,7 @@
                 <%= image_tag p.pet_pics.first.url, :class => 'thumbnail' %>
               </div>
               <div class="col-sm">
-                <div class="row pt-2 pl-4 pr-2">
+                <div class="row pt-2 pl-3 pr-2">
                   <div class="icon <%= p.animal_type.type_name.downcase %>"> </div>
                   <div class="col-sm">
                     <div class="row"><h5 class="card-title"><%= p.name %></h5></div>
@@ -63,7 +67,10 @@
                       <%= content_tag :p, p.breed.name, :class => 'card-subtitle mb-2 text-muted' %>
                     </div>
                   </div>
-                  <%= link_to 'Remove', "/pets/#{p.id}", :method => 'delete', :class => "btn btn-light align-self-start ml-auto mr-3 remove" %>
+                  <% if @current_user.present? && @current_user.shelter_id == @shelter.id %>
+                    <%= link_to 'Remove', p, :method => 'delete', :class => "btn btn-light align-self-start ml-auto mr-3 remove" %>
+                    <%= link_to 'Edit', edit_pet_path(p), :class => "btn btn-light align-self-start ml-auto mr-3 remove" %>
+                  <% end %>
                 </div>
                 <div class="row">
                   <div class="col">

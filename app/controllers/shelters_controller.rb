@@ -1,9 +1,32 @@
 class SheltersController < ApplicationController
 
-  before_action :get_shelter, :only => [:show, :edit, :update]
-  before_action :check_for_shelter_admin, :only => [:edit, :update]
+  before_action :get_shelter, :only => [:show, :edit, :update, :hours, :update_hours]
+  before_action :check_for_shelter_admin, :only => [:edit, :update, :hours]
   before_action :check_for_admin, :only => [:new, :create]
+
+  def hours
+    @hours = @shelter.operating_hours.order(:day_of_week)
+    if @hours.length < 7
+      days = @shelter.operating_hours.pluck(:day_of_week)
+      # not all hours populated
+      for i in (0).upto(6)
+        @shelter.operating_hours.create :day_of_week => i unless days.include? i
+      end
+    end
+    @hours = @shelter.operating_hours.order(:day_of_week).rotate
+  end
   
+  def update_hours
+    hours_params.keys.each do |day|
+      day_num = Date::DAYNAMES.index(day.capitalize)
+      @shelter.operating_hours.find_by(day_of_week: day_num).update hours_params[day]
+    end
+    
+    # raise 'hell'
+
+    redirect_to @shelter
+  end
+
   def show
   end
 
@@ -43,6 +66,18 @@ class SheltersController < ApplicationController
       :url,
       :phone,
       :email
+    )
+  end
+
+  def hours_params
+    params.require(:hours).permit(
+      :monday => {},
+      :tuesday => {},
+      :wednesday => {},
+      :thursday => {},
+      :friday => {},
+      :saturday => {},
+      :sunday => {}
     )
   end
 

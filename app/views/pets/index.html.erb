@@ -1,6 +1,6 @@
 <div class="row">
-<% @pets.each do |p| %>
-  <div class="col-sm">
+<% @pets.each_with_index do |p,i| %>
+  <div class="col-sm-3">
     <div class="card pet shadow-sm">
       <a class="cardlink" href="/pets/<%= p.id %>"></a>        
       <div class="row pt-2 pl-4 pr-2">
@@ -17,4 +17,5 @@
   </div>
 <% end %>
 </div>
+
 

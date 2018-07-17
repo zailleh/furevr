@@ -1,0 +1,20 @@
+<div class="container card form">
+  <div class="card-body">
+    <%= form_tag(shelter_hours_path, method: "post") do %>
+      <%= fields_for :hours, @hours do |hrs| %>  
+        <% @hours.each do |h| %>
+          <%= content_tag :div, class: 'form-group' do %>
+            <%= hrs.label :hours, h.day_of_week %><br />
+            <%= hrs.fields_for "#{h.day_of_week.downcase}", h do |day| %>
+              <%= day.label :open, "Open" %>
+              <%= day.time_field :open, class: 'form-control inline' %>
+              <%= day.label :close, "close" %>
+              <%= day.time_field :close, class: 'form-control inline' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= submit_tag 'Update Hours', :class => 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

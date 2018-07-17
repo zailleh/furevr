@@ -109,7 +109,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 4em;
     background-color: $furevr-green
   }
 }
@@ -172,10 +171,6 @@ header {
   overflow: hidden;
   justify-content: center;
   align-items: center;
-}
-
-.pet-show {
-  background-color: $furevr-teal;
 }
 
 .full-page {
@@ -260,9 +255,29 @@ a.cardlink {
 .inline {
   display: inline-block;
   width: inherit;
+  margin-bottom: 0;
+}
+
+@media (max-width: 576px) {
+  .inline {
+    display: block;
+    width: 100%;
+  }
+  .form-control.inline {
+    display: inline-block;
+  }
 }
 
 .no-list {
   list-style: none;
   padding: 0;
+  width: 100%;
+  li {
+    display: flex;
+  }
+}
+
+.align-right {
+  display: inline-block;
+  margin-left: auto;
 }
