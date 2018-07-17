@@ -1,35 +1,55 @@
 <%= form_for @shelter do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  <% end %>
+  
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :postcode %>
-  <%= f.text_field :postcode %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :address %>
+    <%= f.text_field :address, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :address %>
-  <%= f.text_field :address %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :suburb %>
+    <%= f.text_field :suburb, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :suburb %>
-  <%= f.text_field :suburb %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :state %>
+    <%= f.text_field :state, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :state %>
-  <%= f.text_field :state %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :shelter_type_id %>
+    <%= f.select(:shelter_type_id, ShelterType.all.pluck(:type_name,:id), {}, { :class => 'form-control'}) %>
+  <% end %>
 
-  <%= f.label :shelter_type_id %>
-  <%= f.select(:shelter_type_id, ShelterType.all.pluck(:type_name,:id)) %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :image %>
+    <%= f.url_field :image, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :image %>
-  <%= f.url_field :image %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :url , 'Website' %>
+    <%= f.url_field :url, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :url , 'Website' %>
-  <%= f.url_field :url %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :phone %>
+    <%= f.text_field :phone, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :email %>
+    <%= f.email_field :email, :class => 'form-control' %>
+  <% end %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.submit %>
+  <%= f.submit :class => 'btn btn-primary'%>
 <% end %>
 
 

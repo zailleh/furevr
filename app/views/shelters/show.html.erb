@@ -19,6 +19,17 @@
               Email: <%= link_to @shelter.email, "mailto:#{@shelter.email}" %><br />
               <%= link_to 'Website', @shelter.url %>
             <% end %>
+
+            <%= content_tag :div, class: "info" do %>
+              <%= content_tag :p, 'Opening Hours:' %>
+              <ul class="no-list">
+                <% @shelter.operating_hours.each do |hrs| %>
+                  <%= content_tag :li do %>
+                    <%= "#{ hrs.day_of_week } #{ hrs.open.strftime '%l:%M %p' } - #{ hrs.close.strftime '%l:%M %p' }" %>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
             
             
             

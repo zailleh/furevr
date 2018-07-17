@@ -251,3 +251,18 @@ a.cardlink {
   border-bottom: 1px solid $furevr-blue;
   margin: .5em 0;
 }
+
+
+.form {
+  max-width: 576px !important;
+}
+
+.inline {
+  display: inline-block;
+  width: inherit;
+}
+
+.no-list {
+  list-style: none;
+  padding: 0;
+}

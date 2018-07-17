@@ -64,7 +64,7 @@ s1 = Shelter.create(
 )
 
 s1.operating_hours.create(
-  :day_of_week    => "Mon",  #:integer
+  :day_of_week    => "1",  #:integer
   :open           => "00:00",  #:time
   :close          => "23:59"  #:time
 )

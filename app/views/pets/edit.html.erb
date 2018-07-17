@@ -1,1 +1,6 @@
-<%= render partial: 'form' %>
+<%= content_tag :div, class: 'container card shadow-sm form' do %>
+  <%= content_tag :div, class: 'card-body' do %>
+    <%= content_tag :h2, 'Edit Pet', class: 'card-title' %>
+    <%= render partial: 'form' %>
+  <% end %>
+<% end %>
