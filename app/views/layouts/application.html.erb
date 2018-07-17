@@ -47,16 +47,27 @@
           <%= link_to 'Login', login_path %>
           <% end %>
 
-          <% if @current_user.present? && @current_user.admin? %>
-            <%= link_to 'Admin Console', admin_path %>
+          <%# if @current_user.present? && @current_user.admin? %>
+            <%# link_to 'Admin Console', admin_path %>
+          <%# end %>
+
+          <% if @current_user.present? && @current_user.shelter_id.present? %>
+            <%= link_to 'Manage', shelter_path(@current_user.shelter_id) %>
           <% end %>
         </div>
       </nav>
       <div class="slogan">Open your home Furevr</div>
       <div class="search">
-        <form action="pets/search" method="get">
-            <%= label_tag :search %>
-            <%= password_field_tag :search %>
+        <form action="/pets/search" method="get">
+            <%= label_tag :type, 'Type' %>
+            <%= select_tag :type,  options_from_collection_for_select(AnimalType.all, :id, :type_name) %>
+           
+            <%= label_tag :breed, 'Breed' %>
+            <%= select_tag :breed, options_from_collection_for_select(Breed.all, :id, :name) %>
+            
+            <%= label_tag :state, 'State' %>
+            <%= select_tag :state, options_for_select(Shelter.all.pluck(:state).uniq) %>
+
 
             <%= submit_tag 'Search' %>
         </form>

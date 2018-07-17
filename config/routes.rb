@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   resources :shelter_types
   
   
-  resources :pets
+  get 'pets/search' => 'pets#search', :as => :search
   get 'pets/:id/watch_list' => 'pets#watchlist', :as => :watchlist
   delete 'pets/:id/watch_list' => 'pets#watchlist_remove'
+  resources :pets
   
   
   resources :shelters

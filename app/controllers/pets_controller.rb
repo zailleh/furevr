@@ -10,7 +10,11 @@ class PetsController < ApplicationController
 
   def watchlist_remove
     @current_user.pets.delete @pet
-    redirect_to @pet
+    redirect_to request.referer
+  end
+
+  def search
+    @pets = Pet.search params[:q]
   end
 
   def index
@@ -22,21 +26,26 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    @pet.shelter_id = @current_user.shelter_id
+    @pet_pic = @pet.pet_pics.new
   end
 
   def edit
   end
 
   def create
-    @pet = Pet.create pet_params
+    @pet = Pet.new pet_params
+    @pet.shelter_id = @current_user.shelter_id
+    @pet.save
+    @pet.pet_pics.create :url => params[:pet][:pet_pics][:url] 
+
     redirect_to pet_path(@pet)
 
   end
 
   def destroy
     @pet.destroy
-    redirect_to pets_path
-
+    redirect_to shelter_path(@current_user.shelter_id)
   end
 
   def update

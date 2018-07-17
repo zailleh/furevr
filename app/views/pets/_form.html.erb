@@ -1,0 +1,61 @@
+<%= form_for @pet do |f| %>
+<div class="form-group">
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :animal_type_id, "Pet Type" %>
+    <%= f.select(:animal_type_id, AnimalType.all.pluck(:type_name,:id)) %>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :breed_id, "Breed" %>
+    <%= f.select(:breed_id, Breed.all.pluck(:name, :id)) %>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth, start_year: (Date.today - 365*20).year, end_year: Date.today.year %>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :colour %>
+    <%= f.text_field :colour %>
+  <% end %>
+  
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :size %>
+    <%= f.select(:size, ["Small","Medium","Large"]) %>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :vacc_status, "Vaccinated?" %>
+    <%= f.check_box :vacc_status %>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :pet_pics %>
+    <%= f.fields_for :pet_pics, @pet_pic do |pic| %>
+      <%= pic.url_field :url %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
+
+<!--
+name           :string
+#  date_of_birth  :date
+#  animal_type_id :integer
+#  colour         :string
+#  size           :string
+#  vacc_status    :boolean
+#  shelter_id     :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  breed_id       :bigint(8)
+-->

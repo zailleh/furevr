@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def check_for_shelter_admin
+    unless @current_user.present? && @current_user.shelter_id.present?
+      redirect_to request.referer
+    end
+  end
 end

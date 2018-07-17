@@ -1,9 +1,71 @@
-<%= content_tag :h1, @shelter.name %>
 
-<% @shelter.attributes.each do |item| %>
-  <%= content_tag :p,  item[1] %>
-<% end %>
 
-<div class='controls'>
-  <%= link_to 'Edit', edit_shelter_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4"> <!-- Shelter Info Tile -->
+      <div class="card">
+        <div class="card-body">
+          <div class="shelter-header">
+            <%= image_tag @shelter.image %>
+            <%= content_tag :h1, @shelter.name, class: 'card-title' %>
+          </div>
+            <%= content_tag :p, @shelter.shelter_type.type_name, class: "info" %>
+            <p class="info">
+              <%= @shelter.address %><br />
+              <%= @shelter.suburb %> <%= @shelter.state %> <%= @shelter.postcode %>
+            </p>
+            <%= content_tag :p, class: "info"  do %>
+              Ph: <%= link_to @shelter.phone, "tel:#{@shelter.phone}" %><br />
+              Email: <%= link_to @shelter.email, "mailto:#{@shelter.email}" %><br />
+              <%= link_to 'Website', @shelter.url %>
+            <% end %>
+            
+            
+            
+
+          <% if @current_user.present? && @current_user.shelter_id == @shelter.id %>
+          <div class='controls'>
+            <%= link_to 'Edit', edit_shelter_path, class: 'btn btn-secondary' %>
+            <%= link_to 'Add Pet', new_pet_path, class: 'btn btn-secondary' %>
+          </div>
+          <% end %>
+
+        </div>
+      </div> <!-- END Shelter Info Tile -->
+    </div>
+    <div class="col"> <!-- pets tiles -->
+      <% @shelter.pets.each do |p| %>
+      <div class="row mb-3">
+        <div class="col-sm">      
+          <div class="card pet shadow-sm">
+            <a class="cardlink" href="/pets/<%= p.id %>"></a>
+            <div class="row">
+              <div class="thumb-container">
+                <%= image_tag p.pet_pics.first.url, :class => 'thumbnail' %>
+              </div>
+              <div class="col-sm">
+                <div class="row pt-2 pl-4 pr-2">
+                  <div class="icon <%= p.animal_type.type_name.downcase %>"> </div>
+                  <div class="col-sm">
+                    <div class="row"><h5 class="card-title"><%= p.name %></h5></div>
+                    <div class="row">
+                      <%= content_tag :p, p.breed.name, :class => 'card-subtitle mb-2 text-muted' %>
+                    </div>
+                  </div>
+                  <%= link_to 'Remove', "/pets/#{p.id}", :method => 'delete', :class => "btn btn-light align-self-start ml-auto mr-3 remove" %>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <%= content_tag :p, p.description, class: 'card-text' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div> 
 </div>
+

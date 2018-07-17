@@ -124,6 +124,10 @@ header {
   .card-subtitle {
     margin-top: -1em;
   }
+
+  .card-text {
+    color: black;
+  }
 }
 
 .icon {
@@ -150,14 +154,24 @@ header {
   background-image: url('https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531715849/furevr-app/cat-face.svg');
 }
 
+
+.shelter {
+  background-image: url('https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531789089/dog-house.svg');
+}
 .thumbnail {
-  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .thumb-container {
+  display: flex;
   width: 200px;
+  height: 200px;
   overflow: hidden;
   justify-content: center;
+  align-items: center;
 }
 
 .pet-show {
@@ -193,4 +207,47 @@ header {
   .slogan {
     padding-bottom: 0;
   }
+}
+
+a.cardlink {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  z-index: 1;
+}
+
+.remove {
+  z-index: 2;
+}
+
+.shelter-header {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 10em;
+  justify-content: center;
+  align-content: center;
+  img {
+    max-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  .card-title {
+    position: absolute;
+    bottom: 0px;
+    padding: 0;
+    margin: 0;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.info, a.info {
+  display: block;
+  border-bottom: 1px solid $furevr-blue;
+  margin: .5em 0;
 }
