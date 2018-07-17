@@ -10,7 +10,6 @@ $furevr-teal:#00a688;
 
 
 body {
-  padding: 0;
   margin: 0;
   background-color: #EEE !important;
   min-width: 360px;
@@ -109,7 +108,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $furevr-green
+    background-color: $furevr-green;
+    padding: .5em;
   }
 }
 

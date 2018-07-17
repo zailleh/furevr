@@ -14,7 +14,9 @@ class PetsController < ApplicationController
   end
 
   def search
-    @pets = Pet.search params[:q]
+    @pets = Pet.where(:animal_type_id => params[:type], :breed_id => params[:breed]).joins(:shelter).where( shelters: {:state => params[:state]})
+
+    # raise 'hell'
   end
 
   def index
@@ -31,6 +33,7 @@ class PetsController < ApplicationController
   end
 
   def edit
+    @pet_pic = @pet.pet_pics.new
   end
 
   def create
@@ -50,6 +53,10 @@ class PetsController < ApplicationController
 
   def update
     @pet.update pet_params
+    pic_url = params[:pet][:pet_pics][:url]
+    if pic_url.present? && !@pet.pet_pics.pluck(:url).include?(pic_url)
+      @pet.pet_pics.create :url => pic_url
+    end
     redirect_to pets_path
   end
 
@@ -66,6 +73,8 @@ class PetsController < ApplicationController
       :breed_id
     )
   end
+
+  
 
   def get_pet
     @pet = Pet.find params[:id]
