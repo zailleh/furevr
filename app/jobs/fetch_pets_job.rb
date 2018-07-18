@@ -7,14 +7,12 @@ class FetchPetsJob < ApplicationJob
   end
 
   def perform
-    api_url = 'https://au-pet-api.herokuapp.com/'
-    api_url = 'http://localhost:3000/'
+    api_url = ENV['FUREVR_API']
     
     # fetch main content of the pets api
     content = fetch api_url
 
     content.each do |p|
-      
       #extract lookup data and create records where necessary
       animal_type = AnimalType.find_or_create_by :type_name => p[:type_name]
       breed = Breed.find_or_create_by :name => p[:breedPrimary]
@@ -46,8 +44,8 @@ class FetchPetsJob < ApplicationJob
       elsif images.present?
         pet.pet_pics.find_or_create_by :url => images[:image_path]
       end
+    end # end each pet from api
 
-
-    end
+    FetchPetsJob.set(wait: 1.hour).perform_later
   end
 end
