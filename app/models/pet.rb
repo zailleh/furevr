@@ -9,10 +9,12 @@
 #  colour         :string
 #  size           :string
 #  vacc_status    :boolean
-#  shelter_id     :string
+#  shelter_id     :bigint(8)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  breed_id       :bigint(8)
+#  description    :text
+#  api_id         :bigint(8)
 #
 
 class Pet < ApplicationRecord

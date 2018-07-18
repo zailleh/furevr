@@ -62,3 +62,4 @@ end
 
 
 gem 'jquery-rails'
+gem 'httparty'
