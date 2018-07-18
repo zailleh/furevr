@@ -1,24 +1,33 @@
-# README
+# FURever
+#### Centralised Animal Adoption
+:dog2:**Mission:** to be the go to place to Adopt an Animal into your family.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Visit the app at: https://furevr-app.herokuapp.com/
 
-Things you may want to cover:
+## Technical Information
+#### Backend
+This API is run using:
+* Ruby 2.5.1
+* Rails 5.2.0
+* Postgresql 10.4
 
-* Ruby version
+#### Frontend
+* Bootstrap v4.1.2
 
-* System dependencies
+### Dependencies
+* [au-pet-api](https://au-pet-api.herokuapp.com/) [\[repo\]](https://github.com/zailleh/aus_pet_crawler)
 
-* Configuration
+### Database Setup
+As mentioned above, the database in use is PostgreSQL. After cloning the repo, assuming you have PostgreSQL already running, simply run the below:
+```
+rails db:create && rails db:migrate && rails db:seed
+```
 
-* Database creation
+### Services 
+This API currently uses a single `ActiveJob` to read data from the *au-pet-api*, called `FetchPetsJob`. This job will run automatically  1 minute after startup and every hour thereafter.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run the job manually, in the Rails concole, run:
+```
+FetchPetsJob.perform_now
+```
+This job should be further simplified and broken down as more sites and crawlers are added.
