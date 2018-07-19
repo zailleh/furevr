@@ -25,6 +25,7 @@ class FetchPetsJob < ApplicationJob
       pet.date_of_birth = p[:date_of_birth]
       pet.size = p[:size]
       pet.vacc_status = p[:isVaccinated]
+      pet.description = p[:description1]
 
       # set related items
       pet.shelter = Shelter.first # Shelter.first just for testing TODO: Get shelters from API
