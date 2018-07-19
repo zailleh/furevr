@@ -57,28 +57,7 @@
         </div>
       </nav>
       <div class="slogan">Open your home Furevr</div>
-      <div class="search row">
-        <form action="/pets/search" method="get">
-          <%= content_tag :div, class: 'form-group inline' do %>
-            <%= label_tag :type, 'Type' %>
-            <%= select_tag :type,  options_from_collection_for_select(AnimalType.all, :id, :type_name), {:class => 'form-control inline'} %>
-          <% end %>
-          
-          <%= content_tag :div, class: 'form-group inline' do %>
-            <%= label_tag :breed, 'Breed' %>
-            <%= select_tag :breed, options_from_collection_for_select(Breed.all, :id, :name), {:class => 'form-control inline'} %>
-          <% end %>
-
-          <%= content_tag :div, class: 'form-group inline' do %> 
-            <%= label_tag :state, 'State' %>
-            <%= select_tag :state, options_for_select(Shelter.all.pluck(:state).uniq), {:class => 'form-control inline'} %>
-          <% end %>
-
-          <%= content_tag :div, class: 'form-group inline' do %>
-            <%= submit_tag 'Search', :class => 'btn btn-primary' %>
-          <% end %>
-        </form>
-      </div>
+      <%= render partial: 'search_bar' %>
     </header>
       <main class="container-fluid">
         <%= yield %>

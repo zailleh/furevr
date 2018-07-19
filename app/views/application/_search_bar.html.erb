@@ -1,0 +1,19 @@
+<div class="search row">
+  <div class="col">
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <%= render partial: 'search_form' %>
+        <div class="small-search collapse" id="CollabsibleSearch">
+          <%= render partial: 'search_form' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#CollabsibleSearch" aria-controls="CollabsibleSearch" aria-expanded="false" aria-label="Toggle Search">
+          <span class="btn btn-light">V</span></button>
+        
+      </div>
+    </div>
+  </div>
+</div>

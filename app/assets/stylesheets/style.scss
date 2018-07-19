@@ -281,3 +281,38 @@ a.cardlink {
   display: inline-block;
   margin-left: auto;
 }
+
+.navbar-toggler {
+  // justify-self: center;
+  display: none
+}
+@media (max-width: 620px) {
+  .search {
+    
+    div.row div.col > form {
+      display: none;
+    }
+
+    .navbar-toggler {
+      
+      display: initial
+    }
+
+    .btn-light {
+     color:grey;
+    }
+
+    
+
+
+    text-align: center;
+    label {
+      display: block;
+      visibility: hidden;
+      height: 0;
+    }
+    .btn {
+      margin-top: .25em;
+    }
+  }
+}
