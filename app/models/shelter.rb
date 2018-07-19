@@ -15,6 +15,7 @@
 #  url             :text
 #  phone           :string
 #  email           :string
+#  api_id          :bigint(8)
 #
 
 class Shelter < ApplicationRecord
