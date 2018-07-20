@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+  include PetsHelper
   before_action :check_for_shelter_admin, :only => [:create, :edit, :update, :destroy, :new]
   before_action :get_pet, :only => [:show, :edit, :destroy, :update, :watchlist,:watchlist_remove]
   before_action :check_for_login, :only => [:watchlist, :watchlist_remove]
@@ -14,9 +15,9 @@ class PetsController < ApplicationController
   end
 
   def search
-    @pets = Pet.where(:animal_type_id => params[:type], :breed_id => params[:breed]).joins(:shelter).where( shelters: {:state => params[:state]})
+    # TODO: Update this to build the search based on the params supplied switch statement.
 
-    # raise 'hell'
+    @pets = search_helper
   end
 
   def index

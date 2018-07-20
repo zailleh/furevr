@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
-    else
+    else 
+      #something went wrong, try again
       render :new, :layout => 'signup'
     end
   end

@@ -38,18 +38,21 @@ class FetchPetsJob < ApplicationJob
         pet.animal_type = animal_type
         pet.breed = breed
 
-        pet.save
+        if pet.save 
 
-        # fetch images for this pet from the API
-        images = fetch "#{api_url}pets/#{p[:id]}"
-        
-        if images.kind_of? Array
-          #add each image to the pet
-          images.each do |img|
-            pet.pet_pics.find_or_create_by :url => img[:image_path]
+          # fetch images for this pet from the API
+          images = fetch "#{api_url}pets/#{p[:id]}"
+          
+          if images.kind_of? Array
+            #add each image to the pet
+            images.each do |img|
+              pet.pet_pics.find_or_create_by :url => img[:image_path]
+            end
+          elsif images.present?
+            pet.pet_pics.find_or_create_by :url => images[:image_path]
           end
-        elsif images.present?
-          pet.pet_pics.find_or_create_by :url => images[:image_path]
+        else
+          puts "PET NOT SAVE!!!!"
         end
       end # end each pet from api
     rescue

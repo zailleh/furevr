@@ -25,7 +25,7 @@ class Shelter < ApplicationRecord
   has_many :users
   has_many :operating_hours, dependent: :destroy
 
-  def image
+  def image # Return default placeholder image if empty when requesting image
     result = read_attribute(:image)
     result.present? ? result : 'https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531983865/no-image.jpg'
   end

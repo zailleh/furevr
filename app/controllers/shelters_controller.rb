@@ -9,21 +9,21 @@ class SheltersController < ApplicationController
     if @hours.length < 7
       days = @shelter.operating_hours.pluck(:day_of_week)
       # not all hours populated
-      for i in (0).upto(6)
+      for i in (0).upto(6) #populate new hours for the shelter
         @shelter.operating_hours.create :day_of_week => i unless days.include? i
       end
     end
+    #rotate so that it starts a "monday", by default starts "sunday"
     @hours = @shelter.operating_hours.order(:day_of_week).rotate
   end
   
   def update_hours
+    #update each day in the hours params
     hours_params.keys.each do |day|
       day_num = Date::DAYNAMES.index(day.capitalize)
       @shelter.operating_hours.find_by(day_of_week: day_num).update hours_params[day]
     end
     
-    # raise 'hell'
-
     redirect_to @shelter
   end
 

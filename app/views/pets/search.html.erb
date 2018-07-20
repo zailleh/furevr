@@ -1,34 +1,38 @@
 <h1 class="text-center">Search Results</h1>
 <div class="container">
-  <% @pets.each do |p| %>
-  <div class="row mb-3">
-    <div class="col-sm">      
-      <div class="card pet shadow-sm">
-        <a class="cardlink" href="/pets/<%= p.id %>"></a>
-        <div class="row">
-          <div class="thumb-container">
-            <%= image_tag p.photos.first.url, :class => 'thumbnail' %>
-          </div>
-          <div class="col-sm">
-            <div class="row pt-2 pl-3 pr-2">
-              <div class="icon <%= p.animal_type.type_name.downcase %>"> </div>
-              <div class="col-sm">
-                <div class="row"><h5 class="card-title"><%= p.name %></h5></div>
-                <div class="row">
-                  <%= content_tag :p, p.breed.name, :class => 'card-subtitle mb-2 text-muted' %>
+  <% if @pets %>
+    <% @pets.each do |p| %>
+    <div class="row mb-3">
+      <div class="col-sm">      
+        <div class="card pet shadow-sm">
+          <a class="cardlink" href="/pets/<%= p.id %>"></a>
+          <div class="row">
+            <div class="thumb-container">
+              <%= image_tag p.photos.first.url, :class => 'thumbnail' %>
+            </div>
+            <div class="col-sm">
+              <div class="row pt-2 pl-3 pr-2">
+                <div class="icon <%= p.animal_type.type_name.downcase %>"> </div>
+                <div class="col-sm">
+                  <div class="row"><h5 class="card-title"><%= p.name %></h5></div>
+                  <div class="row">
+                    <%= content_tag :p, p.breed.name, :class => 'card-subtitle mb-2 text-muted' %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <%= content_tag :p, p.description, class: 'card-text' %>
+              <div class="row">
+                <div class="col">
+                  <%= content_tag :p, p.description, class: 'card-text' %>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <% end %>
+  <% else %>
+    <h1>No Results Found!</h1>
   <% end %>
 </div>
 
