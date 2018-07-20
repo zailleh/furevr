@@ -12,7 +12,7 @@
           </div>
         </div>
       </div>
-        <%= image_tag p.photos.first.url, :class => 'card-img-bottom' %>
+        <%= image_tag p.photos.first[:url], :class => 'card-img-bottom' %>
     </div>
   </div>
 <% end %>

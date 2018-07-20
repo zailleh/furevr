@@ -10,7 +10,7 @@
         <div class="carousel-inner card shadow-sm">
         <% @pet.photos.each_with_index do |pic,i| %>
           <div class="carousel-item<%= ' active' if i == 0 %>">
-            <img class="d-block w-100" src="<%= pic.url %>" alt="<% @pet.name %>">
+            <img class="d-block w-100" src="<%= pic[:url] %>" alt="<% @pet.name %>">
           </div>
         <% end %>
         </div>

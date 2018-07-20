@@ -5,8 +5,11 @@
 
 
 $furevr-blue: #0f9cf4;
+$furevr-blue-dark: #0d8edf;
 $furevr-green: #90d03f;
+$furevr-green-dark: #81b937;
 $furevr-teal:#00a688;
+$furevr-teal-dark:#00997d;
 
 
 body {
@@ -24,7 +27,7 @@ header {
   nav {
     color: white;
     font-weight: bolder;
-    background-color: $furevr-blue;
+    background: linear-gradient(to bottom,$furevr-blue,$furevr-blue-dark);
     height: 128px;
     a {
       color: white;
@@ -104,7 +107,7 @@ header {
   }
 
   .slogan {
-    background-color: $furevr-teal;
+    background: linear-gradient(to bottom,$furevr-teal,$furevr-teal-dark);
     color: white;
     text-align: center;
     line-height: 3em;
@@ -124,7 +127,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $furevr-green;
+    background: linear-gradient(to bottom,$furevr-green,$furevr-green-dark);
     padding: .5em;
   }
 }
@@ -201,9 +204,18 @@ header {
   color: white;
   text-align: center;
 
+  .logo {
+    width: 128px;
+    height: 128px;
+    left: calc(50% - 64px);
+  }
 
-  main, nav, .slogan {
+  main, .slogan {
     padding: 2em;
+  }
+
+  nav {
+    padding: 1em;
   }
   
   nav {
@@ -211,7 +223,7 @@ header {
     justify-content: right;
     align-items: flex-start;
     a {
-      margin-left: auto;
+      margin-right: auto;
     }
   }
   
