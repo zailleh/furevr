@@ -81,11 +81,19 @@ header {
       .hide-sm {
         display: none
       }
+
+      .logo {
+        width: 128px;
+        height: 128px;
+      }
     }
 
     @media (min-width: 577px) {
       .show-sm {
         display: none;
+      }
+      .slogan h2 {
+        margin-top: 1em;
       }
     }
     @media (min-width: 761px) {
@@ -96,12 +104,20 @@ header {
   }
 
   .slogan {
-    font-size: 2em;
     background-color: $furevr-teal;
     color: white;
     text-align: center;
     line-height: 3em;
     padding-top: 1.25em;
+    h2 {
+      margin: .5em auto;
+    }
+
+    @media (min-width: 577px) {
+      h2 {
+        margin-top: 1.25em;
+      }
+    }
   }
 
   .search {
