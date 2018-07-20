@@ -12,11 +12,7 @@
           </div>
         </div>
       </div>
-      <% unless p.pet_pics.first.url.present? %>
-        <%= image_tag 'https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531983865/no-image.jpg' , :class => 'card-img-bottom' %>
-      <% else %>
-        <%= image_tag p.pet_pics.first.url, :class => 'card-img-bottom' %>
-      <% end %>
+        <%= image_tag p.photos.first.url, :class => 'card-img-bottom' %>
     </div>
   </div>
 <% end %>

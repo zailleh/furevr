@@ -10,23 +10,27 @@ class FetchSheltersJob < ApplicationJob
     api_url = ENV['FUREVR_API']
     shelters_url = "#{api_url}shelters"
     # fetch main content of the pets api
-    content = fetch shelters_url
+    begin
+      content = fetch shelters_url
 
-    content.each do |s|
-      unless s[:shelter_id] == 0
-        begin
-          new_s = Shelter.find_or_initialize_by api_id: s[:shelter_id]
-          new_s.name = s[:name]
-          new_s.state = s[:state]
-          new_s.phone = s[:phone]
-          new_s.address = s[:address]
-          new_s.shelter_type = ShelterType.find_by type_name: 'Animal Rescue'
-          new_s.save
-        rescue
-          "whoops, already exists!"
+      content.each do |s|
+        unless s[:shelter_id] == 0
+          begin
+            new_s = Shelter.find_or_initialize_by api_id: s[:shelter_id]
+            new_s.name = s[:name]
+            new_s.state = s[:state]
+            new_s.phone = s[:phone]
+            new_s.address = s[:address]
+            new_s.shelter_type = ShelterType.find_by type_name: 'Animal Rescue'
+            new_s.save
+          rescue
+            "whoops, already exists!"
+          end
         end
-      end
-    end # end each shelter from api
+      end # end each shelter from api
+    rescue 
+      "whoops, something went wrong connecting to API"
+    end
 
     FetchSheltersJob.set(wait: 1.day).perform_later
   end

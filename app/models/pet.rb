@@ -25,6 +25,9 @@ class Pet < ApplicationRecord
   has_many :pet_pics, :dependent => :destroy
   belongs_to :breed
 
+  def photos
+    self.pet_pics.present? ? self.pet_pics : [{url: 'https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531983865/no-image.jpg' }]
+  end
 
   def age
     days = ((Date.today.mjd - read_attribute(:date_of_birth).mjd) / 365.25 * 2).ceil / 2.0

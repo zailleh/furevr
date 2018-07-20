@@ -12,11 +12,7 @@
           </div>
         </div>
       </div>
-      <% unless s.image.present? %>
-        <%= image_tag 'https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531983865/no-image.jpg' %>
-      <% else %>
         <%= image_tag s.image, :class => 'card-img-bottom' %>
-      <% end %>
     </div>
   </div>
 <% end %>

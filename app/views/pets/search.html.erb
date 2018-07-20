@@ -7,11 +7,7 @@
         <a class="cardlink" href="/pets/<%= p.id %>"></a>
         <div class="row">
           <div class="thumb-container">
-            <% unless p.pet_pics.first.url.present? %>
-              <%= image_tag 'https://res.cloudinary.com/ddqzfx6t8/image/upload/v1531983865/no-image.jpg' , :class => 'card-img-bottom' %>
-            <% else %>
-              <%= image_tag p.pet_pics.first.url, :class => 'thumbnail' %>
-            <% end %>
+            <%= image_tag p.photos.first.url, :class => 'thumbnail' %>
           </div>
           <div class="col-sm">
             <div class="row pt-2 pl-3 pr-2">
