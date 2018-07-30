@@ -20,7 +20,7 @@ class FetchPetsJob < ApplicationJob
       content.each do |p|
         #extract lookup data and create records where necessary
         animal_type = AnimalType.find_or_create_by :type_name => p[:type_name]
-        breed = Breed.find_or_create_by :name => p[:breedPrimary]
+        breed = Breed.find_or_create_by :name => p[:breed_primary]
         breed.animal_type_id = animal_type.id unless breed.animal_type_id.present?
 
         # create (or find an existing) pet and set details
@@ -29,12 +29,13 @@ class FetchPetsJob < ApplicationJob
         pet.colour = [p[:primary_colour],p[:secondary_colour]].join " / "
         pet.date_of_birth = p[:date_of_birth]
         pet.size = p[:size]
-        pet.vacc_status = p[:isVaccinated]
-        pet.description = p[:description1]
+        pet.vacc_status = p[:vaccinated]
+        pet.description = p[:description]
         
         # set related items
         shelter = Shelter.find_or_initialize_by id: p[:shelter]
         unless shelter.shelter_type.present?
+          puts "Shelter Doesn't Exist - Creating!"
           shelter.shelter_type = ShelterType.find_by type_name: 'Animal Rescue' 
           shelter.save
         end
